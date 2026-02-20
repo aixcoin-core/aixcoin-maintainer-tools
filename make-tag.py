@@ -130,7 +130,7 @@ def main():
         version += f" release candidate {spec.rc}"
     else:
         version += " final"
-    msg = 'Bitcoin Core ' + version + '\n'
+    msg = 'Aix Core ' + version + '\n'
 
     # Add treehash header
     msg += "\n"

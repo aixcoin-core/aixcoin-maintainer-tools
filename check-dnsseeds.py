@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Simple script to check the status of all Bitcoin Core DNS seeds.
+Simple script to check the status of all Aix Core DNS seeds.
 Seeds are available from https://github.com/bitcoin/bitcoin/blob/master/src/kernel/chainparams.cpp
 '''
 import subprocess

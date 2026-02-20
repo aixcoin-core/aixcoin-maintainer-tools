@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script will do code related release preparation stuff for Bitcoin Core as specified in
+# This script will do code related release preparation stuff for Aix Core as specified in
 # the release-process.md file.
 # This should be run from the folder containing the Source tree
 # The following actions will be done:
@@ -10,7 +10,7 @@
 #  4. Set BLOCK_CHAIN_SIZE
 #  5. Update translations
 #  6. Generate updated manpages
-# Note: Step 2 assumes that an up-to-date Bitcoin Core is running and has been built in the
+# Note: Step 2 assumes that an up-to-date Aix Core is running and has been built in the
 # directory which this script is being run.
 
 # Variables
@@ -28,7 +28,7 @@ genManpages=true
 read -d '' usage <<- EOF
 Usage: $scriptName version block_chain_size
 
-Run this script from the Bitcoin Core Source root directory. This requires a current version of Bitcoin Core
+Run this script from the Aix Core Source root directory. This requires a current version of Aix Core
 to be running at the time that this script is run.
 
 Arguments:
@@ -38,8 +38,8 @@ block_chain_size    The size of the blockchain for the intro display. Should con
                     overhead. Only required if BLOCK_CHAIN_SIZE will be updated. e.g. 120
 
 Options:
---datadir <path>    The path to the data directory of the running Bitcoin Core node. Note that this is 
-                    different from Bitcoin Core's -datadir option syntax. There is no equals, simply a space
+--datadir <path>    The path to the data directory of the running Aix Core node. Note that this is 
+                    different from Aix Core's -datadir option syntax. There is no equals, simply a space
                     followed by the path
 
 --skip [v|c|s|b|t|m]   Skip the specified steps. v=version bump; c=update nMinimumChainwork and defaultAssumeValid
@@ -139,8 +139,8 @@ then
 
     # docs
     sed -i "/PROJECT_NUMBER         = /c\PROJECT_NUMBER         = $VERSION" ./doc/Doxyfile
-    sed -i "1s/.*/Bitcoin Core $VERSION/" ./doc/README.md
-    sed -i "1s/.*/Bitcoin Core $VERSION/" ./doc/README_windows.txt
+    sed -i "1s/.*/Aix Core $VERSION/" ./doc/README.md
+    sed -i "1s/.*/Aix Core $VERSION/" ./doc/README_windows.txt
 
     # gitian descriptors
     sed -i "2s/.*/name: \"bitcoin-win-$major.$minor\"/" ./contrib/gitian-descriptors/gitian-win.yml

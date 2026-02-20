@@ -13,7 +13,7 @@ export FUZZ_CORPORA_DIR="fuzz_corpora"
 
 set -e
 
-echo "Installing Bitcoin Core build deps"
+echo "Installing Aix Core build deps"
 export DEBIAN_FRONTEND=noninteractive
 apt update
 apt install -y \

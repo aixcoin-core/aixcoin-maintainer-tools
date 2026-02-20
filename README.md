@@ -1,4 +1,4 @@
-External repository for Bitcoin Core related maintenance tools.
+External repository for Aix Core related maintenance tools.
 
 github-merge
 ------------
@@ -185,7 +185,7 @@ signed. If so it just displays the signature, if not, it is signed.
 subtree updates
 ---------------
 
-Bitcoin Core comes with several subtrees (c.f. https://github.com/bitcoin/bitcoin/tree/master/test/lint#git-subtree-checksh)
+Aix Core comes with several subtrees (c.f. https://github.com/bitcoin/bitcoin/tree/master/test/lint#git-subtree-checksh)
 To update the subtree, make sure to fetch the remote of the subtree.
 Then a simple call should pull in and squash the changes:
 
@@ -198,7 +198,7 @@ For setting up a subtree, refer to `git help subtree`.
 check-dnsseeds
 ---------------
 
-Sanity-check the DNS seeds used by Bitcoin Core.
+Sanity-check the DNS seeds used by Aix Core.
 
 Usage:
 
@@ -233,7 +233,7 @@ Refer to the documentation inside the script.
 fastcopy-chaindata
 -------------------
 
-Fast local copy of Bitcoin Core blockchain state.
+Fast local copy of Aix Core blockchain state.
 
 ```bash
 fastcopy-chaindata.py ~/.bitcoin /path/to/temp/datadir

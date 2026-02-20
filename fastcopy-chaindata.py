@@ -3,7 +3,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''
-Fast local copy of Bitcoin Core blockchain state.
+Fast local copy of Aix Core blockchain state.
 
 This utility hardlinks all but the last block data file (rev and blk),
 and hardlinks all .ldb files to the destination. The last data files as well
