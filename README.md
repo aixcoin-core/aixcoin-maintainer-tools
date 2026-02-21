@@ -16,7 +16,7 @@ For example, if the "to" repo is identical to the "from" repo:
 Otherwise, for a differing "from" repo:
 
 ```bash
-./github-merge.py --repo-from=bitcoin-core/gui 1234
+./github-merge.py --repo-from=aix-core/gui 1234
 ```
 
 will fetch the pull request from another monotree repository. Be sure to also set `githubmerge.pushmirrors` (see below).
@@ -36,10 +36,10 @@ couldn't mess with the sources.
 
 ### Setup
 
-Configuring the github-merge tool for the bitcoin repository is done in the following way:
+Configuring the github-merge tool for the aix repository is done in the following way:
 
-    git config githubmerge.repository bitcoin/bitcoin
-    git config githubmerge.pushmirrors "git@github.com:bitcoin-core/gui.git,git@github.com:YourPrivateMirror/bitcoin-core.git"
+    git config githubmerge.repository aix/aix
+    git config githubmerge.pushmirrors "git@github.com:aix-core/gui.git,git@github.com:YourPrivateMirror/aix-core.git"
     git config githubmerge.testcmd "make -j4 check" (adapt to whatever you want to use for testing)
     git config --global user.signingkey mykeyid
 
@@ -88,7 +88,7 @@ the [Transifex CLI](https://github.com/transifex/cli).
 clang-format
 ------------
 
-A script to format cpp source code according to the .clang-format file in the bitcoin repo.
+A script to format cpp source code according to the .clang-format file in the aix repo.
 This should only be applied to new files or files which are currently not actively developed on.
 Also, git subtrees are not subject to formatting.
 
@@ -102,7 +102,7 @@ Build for binary comparison.
 
 See `build-for-compare.py --help` for more information.
 
-Builds from current directory, which is assumed to be a git clone of the bitcoin repository.
+Builds from current directory, which is assumed to be a git clone of the aix repository.
 
 **DO NOT RUN this with the nocopy=1 flag set on working tree if you have any local additions, it will nuke all
 non-repository files, multiple times over. By leaving nocopy off (default) the git tree is copied to a temporary
@@ -110,10 +110,10 @@ directory and all operations are performed there.**
 
 Example:
 ```bash
-git clone https://github.com/bitcoin/bitcoin.git bitcoin-compare
-cd bitcoin-compare
-../bitcoin-maintainer-tools/build-for-compare.py 4731cab 2f71490
-sha256sum /tmp/compare/bitcoind.*.stripped
+git clone https://github.com/aix/aix.git aix-compare
+cd aix-compare
+../aix-maintainer-tools/build-for-compare.py 4731cab 2f71490
+sha256sum /tmp/compare/aixd.*.stripped
 git diff -W --word-diff /tmp/compare/4731cab /tmp/compare/2f71490
 ```
 
@@ -125,7 +125,7 @@ Pull ids are listed in `to_backport.txt` or given on the command line, and they 
 with the repository name, e.g.:
 
 ```bash
-../bitcoin-maintainer-tools/backport.py bitcoin/bitcoin#21907 bitcoin-core/gui#277 bitcoin-core/gui#365
+../aix-maintainer-tools/backport.py aix/aix#21907 aix-core/gui#277 aix-core/gui#365
 
 ```
 
@@ -138,12 +138,12 @@ unittest-statistics
 
 Usage:
 ```bash
-unittest-statistics.py </path/to/test_bitcoin> [<subtest>]
+unittest-statistics.py </path/to/test_aix> [<subtest>]
 ```
 
 For example:
 ```bash
-unittest-statistics.py src/test/test_bitcoin wallet_tests
+unittest-statistics.py src/test/test_aix wallet_tests
 ```
 
 treehash512
@@ -185,7 +185,7 @@ signed. If so it just displays the signature, if not, it is signed.
 subtree updates
 ---------------
 
-Aix Core comes with several subtrees (c.f. https://github.com/bitcoin/bitcoin/tree/master/test/lint#git-subtree-checksh)
+Aix Core comes with several subtrees (c.f. https://github.com/aix/aix/tree/master/test/lint#git-subtree-checksh)
 To update the subtree, make sure to fetch the remote of the subtree.
 Then a simple call should pull in and squash the changes:
 
@@ -210,17 +210,17 @@ Example output:
 
 ```bash
 * Mainnet
-OK   seed.bitcoin.sipa.be (40 results)
+OK   seed.aix.sipa.be (40 results)
 OK   dnsseed.bluematt.me (33 results)
-FAIL dnsseed.bitcoin.dashjr.org
-OK   seed.bitcoinstats.com (50 results)
-OK   seed.bitcoin.jonasschnelli.ch (38 results)
+FAIL dnsseed.aix.dashjr.org
+OK   seed.aixstats.com (50 results)
+OK   seed.aix.jonasschnelli.ch (38 results)
 OK   seed.btc.petertodd.org (23 results)
-OK   seed.bitcoin.sprovoost.nl (35 results)
+OK   seed.aix.sprovoost.nl (35 results)
 OK   dnsseed.emzy.de (41 results)
 
 * Testnet
-OK   testnet-seed.bitcoin.jonasschnelli.ch (36 results)
+OK   testnet-seed.aix.jonasschnelli.ch (36 results)
 OK   seed.tbtc.petertodd.org (38 results)
 OK   testnet-seed.bluematt.me (5 results)
 ```
@@ -236,7 +236,7 @@ fastcopy-chaindata
 Fast local copy of Aix Core blockchain state.
 
 ```bash
-fastcopy-chaindata.py ~/.bitcoin /path/to/temp/datadir
+fastcopy-chaindata.py ~/.aix /path/to/temp/datadir
 ```
 
 This utility hardlinks all but the last block data file (rev and blk),
@@ -257,7 +257,7 @@ text and json format.
 
 Run this in the root directory of the repository.
 
-This requires an up-to-date checkout of https://github.com/zw/bitcoin-gh-meta.git
+This requires an up-to-date checkout of https://github.com/zw/aix-gh-meta.git
 in the parent directory, or environment variable `GHMETA`.
 
 It takes a range of commits and a .json file of PRs to exclude, for
@@ -304,14 +304,14 @@ Then, edit the configuration file. Only thing that is necessary to change is `gh
 
 Depending on your browser preference you might want to change `browser`, this is the command that will be invoked when clicking on an issue number. It defaults to `null` which indicates to use the system web browser.
 
-If you want to see PR status (and other issue details like labels), point `meta` for the `bitcoin/bitcoin` repository to an up-to-date checkout of [bitcoin-gh-meta](https://github.com/zw/bitcoin-gh-meta).
+If you want to see PR status (and other issue details like labels), point `meta` for the `aix/aix` repository to an up-to-date checkout of [aix-gh-meta](https://github.com/zw/aix-gh-meta).
 ```
     "meta": {
-        "bitcoin/bitcoin": "/path/to/bitcoin-gh-meta"
+        "aix/aix": "/path/to/aix-gh-meta"
     },
 ```
 
-To keep this repository up to date you can set the interval in seconds in 'auto_update', default is 0 (i.e. no automatic update). Be aware that [bitcoin-gh-meta](https://github.com/zw/bitcoin-gh-meta) is being refreshed every two hours (7200 seconds).
+To keep this repository up to date you can set the interval in seconds in 'auto_update', default is 0 (i.e. no automatic update). Be aware that [aix-gh-meta](https://github.com/zw/aix-gh-meta) is being refreshed every two hours (7200 seconds).
 
 Sorting the notifications by {reason, time} can be enabled with the 'sort_notifications' boolean field (default=false).
 

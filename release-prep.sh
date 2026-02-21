@@ -143,16 +143,16 @@ then
     sed -i "1s/.*/Aix Core $VERSION/" ./doc/README_windows.txt
 
     # gitian descriptors
-    sed -i "2s/.*/name: \"bitcoin-win-$major.$minor\"/" ./contrib/gitian-descriptors/gitian-win.yml
-    sed -i "2s/.*/name: \"bitcoin-linux-$major.$minor\"/" ./contrib/gitian-descriptors/gitian-linux.yml
-    sed -i "2s/.*/name: \"bitcoin-osx-$major.$minor\"/" ./contrib/gitian-descriptors/gitian-osx.yml
+    sed -i "2s/.*/name: \"aix-win-$major.$minor\"/" ./contrib/gitian-descriptors/gitian-win.yml
+    sed -i "2s/.*/name: \"aix-linux-$major.$minor\"/" ./contrib/gitian-descriptors/gitian-linux.yml
+    sed -i "2s/.*/name: \"aix-osx-$major.$minor\"/" ./contrib/gitian-descriptors/gitian-osx.yml
 fi
 
 if [[ $chainparamsUpdate = true ]]
 then
     # Update nMinimumChainWork and defaultAssumeValid
     echo "Updating nMinimumChainWork and defaultAssumeValid"
-    blockchaininfo=`src/bitcoin-cli ${DATADIR} getblockchaininfo`
+    blockchaininfo=`src/aix-cli ${DATADIR} getblockchaininfo`
     chainwork=`echo "$blockchaininfo" | jq -r '.chainwork'`
     bestblockhash=`echo "$blockchaininfo" | jq -r '.bestblockhash'`
     sed -i "0,/        consensus.nMinimumChainWork = uint256S(.*/s//        consensus.nMinimumChainWork = uint256S(\"0x$chainwork\");/" ./src/chainparams.cpp
@@ -164,7 +164,7 @@ then
     # Update Seeds
     echo "Updating hard coded seeds"
     pushd ./contrib/seeds
-    curl -s http://bitcoin.sipa.be/seeds.txt > seeds_main.txt
+    curl -s http://aix.sipa.be/seeds.txt > seeds_main.txt
     python makeseeds.py < seeds_main.txt > nodes_main.txt
     python generate-seeds.py . > ../../src/chainparamsseeds.h
 popd
@@ -196,8 +196,8 @@ then
     # Update translations
     echo "Updating translations"
     python contrib/devtools/update-translations.py
-    ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(bitcoin_\(.*\)\).ts/<file alias="\2">locale\/\1.qm<\/file>/'
-    ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(bitcoin_\(.*\)\).ts/ qt\/locale\/\1.ts \\/'
+    ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(aix_\(.*\)\).ts/<file alias="\2">locale\/\1.qm<\/file>/'
+    ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(aix_\(.*\)\).ts/ qt\/locale\/\1.ts \\/'
 fi
 
 if [[ $genManpages = true ]]

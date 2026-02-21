@@ -5,7 +5,7 @@ text and JSON format.
 
 Run this in the root directory of the repository.
 
-This requires an up-to-date checkout of https://github.com/zw/bitcoin-gh-meta.git
+This requires an up-to-date checkout of https://github.com/zw/aix-gh-meta.git
 in the parent directory, or environment variable `GHMETA`.
 
 It takes a range of commits and a .json file of PRs to exclude, for
@@ -31,11 +31,11 @@ from collections import namedtuple, defaultdict
 
 # == Global environment ==
 GIT = os.getenv('GIT', 'git')
-GHMETA = os.getenv('GHMETA', '../bitcoin-gh-meta')
-DEFAULT_REPO = os.getenv('DEFAULT_REPO', 'bitcoin/bitcoin')
+GHMETA = os.getenv('GHMETA', '../aix-gh-meta')
+DEFAULT_REPO = os.getenv('DEFAULT_REPO', 'aix/aix')
 
 # == Label to category mapping ==
-# See: https://github.com/bitcoin/bitcoin/labels
+# See: https://github.com/aix/aix/labels
 # this is priority ordering: the first label to be matched determines the
 # category it is slotted to
 # TODO: simply create titles for combinations of mappings, and leave it up to release note writer
@@ -134,14 +134,14 @@ PREFIXES = [
 
 # Per-repository information
 REPO_INFO = {
-    'bitcoin/bitcoin': {
+    'aix/aix': {
         'label_mapping': LABEL_MAPPING,
         'prefixes': PREFIXES,
         'default_category': UNCATEGORIZED,
         'ghmeta': GHMETA,
     },
     # For now, GUI repository pulls are automatically categorized into the GUI category.
-    'bitcoin-core/gui': {
+    'aix-core/gui': {
         'label_mapping': (),
         'prefixes': [],
         'default_category': 'GUI',
@@ -205,15 +205,15 @@ class FQId:
 
 def tests():
     '''Quick internal sanity tests.'''
-    assert(FQId.parse('bitcoin/bitcoin#1234', 'bitcoin/bitcoin') == FQId('bitcoin', 'bitcoin', 1234))
-    assert(FQId.parse('bitcoin-core/gui#1235', 'bitcoin/bitcoin') == FQId('bitcoin-core', 'gui', 1235))
-    assert(FQId.parse('#1236', 'bitcoin/bitcoin') == FQId('bitcoin', 'bitcoin', 1236))
-    assert(FQId.parse('1237', 'bitcoin/bitcoin') == FQId('bitcoin', 'bitcoin', 1237))
-    assert(str(FQId('bitcoin', 'bitcoin', 1239)) == 'bitcoin/bitcoin#1239')
-    assert(FQId('bitcoin', 'bitcoin', 1239) < FQId('bitcoin', 'bitcoin', 1240))
-    assert(not (FQId('bitcoin', 'bitcoin', 1240) < FQId('bitcoin', 'bitcoin', 1239)))
-    assert(FQId('bitcoin', 'bitcoin', 1240) < FQId('bitcoin-core', 'gui', 1239))
-    assert(not (FQId('bitcoin-core', 'gui', 1239) < FQId('bitcoin', 'bitcoin', 1240)))
+    assert(FQId.parse('aix/aix#1234', 'aix/aix') == FQId('aix', 'aix', 1234))
+    assert(FQId.parse('aix-core/gui#1235', 'aix/aix') == FQId('aix-core', 'gui', 1235))
+    assert(FQId.parse('#1236', 'aix/aix') == FQId('aix', 'aix', 1236))
+    assert(FQId.parse('1237', 'aix/aix') == FQId('aix', 'aix', 1237))
+    assert(str(FQId('aix', 'aix', 1239)) == 'aix/aix#1239')
+    assert(FQId('aix', 'aix', 1239) < FQId('aix', 'aix', 1240))
+    assert(not (FQId('aix', 'aix', 1240) < FQId('aix', 'aix', 1239)))
+    assert(FQId('aix', 'aix', 1240) < FQId('aix-core', 'gui', 1239))
+    assert(not (FQId('aix-core', 'gui', 1239) < FQId('aix', 'aix', 1240)))
 
 # == Main program ==
 tests()
@@ -269,7 +269,7 @@ def parse_commit_message(msg):
     for line in msg.splitlines():
         if line.startswith('Github-Pull:'):
             param = line[12:].strip()
-            if param.startswith('#'): # compensate for incorrect #bitcoin-core/gui#148
+            if param.startswith('#'): # compensate for incorrect #aix-core/gui#148
                 param = param[1:]
             retval.pull = FQId.parse(param, DEFAULT_REPO)
         if line.startswith('Rebased-From:'):

@@ -28,7 +28,7 @@ LCONVERT = 'lconvert'
 # Name of transifex tool
 TX = os.getenv('TX', 'tx')
 # Name of source language file without extension
-SOURCE_LANG = 'bitcoin_en'
+SOURCE_LANG = 'aix_en'
 # Directory with locale files
 LOCALE_DIR = 'src/qt/locale'
 # Minimum number of non-numerus messages for translation to be considered at all
@@ -54,7 +54,7 @@ def remove_current_translations():
     '''
     Remove current translations.
     We only want the active translations that are currently on transifex.
-    This leaves bitcoin_en.ts untouched.
+    This leaves aix_en.ts untouched.
     '''
     for (_,name) in all_ts_files():
         os.remove(name)
@@ -163,9 +163,9 @@ def escape_cdata(text):
     text = text.replace('"', '&quot;')
     return text
 
-def contains_bitcoin_addr(text, errors):
+def contains_aix_addr(text, errors):
     if text is not None and ADDRESS_REGEXP.search(text) is not None:
-        errors.append('Translation "%s" contains a bitcoin address. This will be removed.' % (text))
+        errors.append('Translation "%s" contains a aix address. This will be removed.' % (text))
         return True
     return False
 
@@ -189,7 +189,7 @@ def postprocess_message(filename, message, xliff_compatible_mode):
         if translation is None:
             continue
         errors = []
-        valid = check_format_specifiers(source, translation, errors, numerus) and not contains_bitcoin_addr(translation, errors)
+        valid = check_format_specifiers(source, translation, errors, numerus) and not contains_aix_addr(translation, errors)
 
         for error in errors:
             print('%s: %s' % (filename, error))
@@ -268,11 +268,11 @@ def update_build_systems():
     '''
     Update build system and Qt resource descriptors.
     '''
-    filename_lang = [re.match(r'((bitcoin_(.*)).ts)$', filename).groups() for (filename, filepath) in all_ts_files(include_source=True)]
+    filename_lang = [re.match(r'((aix_(.*)).ts)$', filename).groups() for (filename, filepath) in all_ts_files(include_source=True)]
     filename_lang.sort(key=lambda x: x[0])
 
     # update qrc locales
-    with open('src/qt/bitcoin_locale.qrc', 'w') as f:
+    with open('src/qt/aix_locale.qrc', 'w') as f:
         f.write('<!DOCTYPE RCC><RCC version="1.0">\n')
         f.write('    <qresource prefix="/translations">\n')
         for (filename, basename, lang) in filename_lang:

@@ -13,7 +13,7 @@ import os, sys
 GIT = os.getenv('GIT','git')
 BASH = os.getenv('BASH','bash')
 # Other configuration
-SRCREPO = os.getenv('SRCREPO', '../bitcoin')
+SRCREPO = os.getenv('SRCREPO', '../aix')
 
 def ask_prompt(text):
     print(text,end=" ",file=sys.stderr)

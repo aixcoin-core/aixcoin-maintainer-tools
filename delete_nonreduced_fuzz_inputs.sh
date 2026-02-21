@@ -30,7 +30,7 @@ ln -s $(which llvm-symbolizer-$LLVM_VERSION) /usr/bin/llvm-symbolizer
 git clone --branch stable https://github.com/AFLplusplus/AFLplusplus
 make -C AFLplusplus LLVM_CONFIG=llvm-config-$LLVM_VERSION PERFORMANCE=1 install -j$(nproc)
 
-git clone --depth=1 https://github.com/bitcoin-core/qa-assets.git
+git clone --depth=1 https://github.com/aix-core/qa-assets.git
 (
   cd qa-assets
   mv ./"${FUZZ_CORPORA_DIR}" ../all_inputs
@@ -39,9 +39,9 @@ git clone --depth=1 https://github.com/bitcoin-core/qa-assets.git
   git commit -a -m "Delete fuzz inputs"
 )
 
-git clone --depth=1 https://github.com/bitcoin/bitcoin.git
+git clone --depth=1 https://github.com/aix/aix.git
 (
-  cd bitcoin
+  cd aix
 
   echo "Adding reduced seeds with afl-cmin"
 
