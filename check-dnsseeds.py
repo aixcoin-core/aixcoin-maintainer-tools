@@ -1,34 +1,34 @@
 #!/usr/bin/env python3
 '''
 Simple script to check the status of all Bitcoin Core DNS seeds.
-Seeds are available from https://github.com/bitcoin/bitcoin/blob/master/src/kernel/chainparams.cpp
+Seeds are available from https://github.com/aixcoin/aixcoin/blob/master/src/kernel/chainparams.cpp
 '''
 import subprocess
 
 SEEDS_PER_NETWORK={
     'mainnet': [
-        "seed.bitcoin.sipa.be",
+        "seed.aixcoin.sipa.be",
         "dnsseed.bluematt.me",
-        "seed.bitcoin.jonasschnelli.ch",
+        "seed.aixcoin.jonasschnelli.ch",
         "seed.btc.petertodd.net",
-        "seed.bitcoin.sprovoost.nl",
+        "seed.aixcoin.sprovoost.nl",
         "dnsseed.emzy.de",
-        "seed.bitcoin.wiz.biz",
+        "seed.aixcoin.wiz.biz",
         "seed.mainnet.achownodes.xyz",
     ],
     'testnet': [
-        "testnet-seed.bitcoin.jonasschnelli.ch",
+        "testnet-seed.aixcoin.jonasschnelli.ch",
         "seed.tbtc.petertodd.net",
         "testnet-seed.bluematt.me",
-        "seed.testnet.bitcoin.sprovoost.nl",
+        "seed.testnet.aixcoin.sprovoost.nl",
         "seed.testnet.achownodes.xyz",
     ],
     'testnet4': [
-        "seed.testnet4.bitcoin.sprovoost.nl",
+        "seed.testnet4.aixcoin.sprovoost.nl",
         "seed.testnet4.wiz.biz",
     ],
     'signet': [
-        "seed.signet.bitcoin.sprovoost.nl",
+        "seed.signet.aixcoin.sprovoost.nl",
         "seed.signet.achownodes.xyz"
     ],
 }
