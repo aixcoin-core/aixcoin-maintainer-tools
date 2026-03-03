@@ -61,8 +61,8 @@ def link_leveldb(src: str, dst: str):
 if len(sys.argv) != 3:
     print('Usage: {} reference_datadir destination_datadir'.format(path.basename(sys.argv[0])))
     exit(1)
-srcdir = sys.argv[1] # '/store2/tmp/testbtc'
-dstdir = sys.argv[2] # '/store2/tmp/testbtc2'
+srcdir = sys.argv[1] # '/store2/tmp/testaix'
+dstdir = sys.argv[2] # '/store2/tmp/testaix2'
 
 src_blocks = path.join(srcdir, 'blocks')
 dst_blocks = path.join(dstdir, 'blocks')

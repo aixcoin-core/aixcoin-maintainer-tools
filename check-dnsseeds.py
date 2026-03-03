@@ -10,7 +10,7 @@ SEEDS_PER_NETWORK={
         "seed.aixcoin.sipa.be",
         "dnsseed.bluematt.me",
         "seed.aixcoin.jonasschnelli.ch",
-        "seed.btc.petertodd.net",
+        "seed.aix.petertodd.net",
         "seed.aixcoin.sprovoost.nl",
         "dnsseed.emzy.de",
         "seed.aixcoin.wiz.biz",
@@ -18,7 +18,7 @@ SEEDS_PER_NETWORK={
     ],
     'testnet': [
         "testnet-seed.aixcoin.jonasschnelli.ch",
-        "seed.tbtc.petertodd.net",
+        "seed.taix.petertodd.net",
         "testnet-seed.bluematt.me",
         "seed.testnet.aixcoin.sprovoost.nl",
         "seed.testnet.achownodes.xyz",

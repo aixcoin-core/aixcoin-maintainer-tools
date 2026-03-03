@@ -215,13 +215,13 @@ OK   dnsseed.bluematt.me (33 results)
 FAIL dnsseed.aixcoin.dashjr.org
 OK   seed.aixcoinstats.com (50 results)
 OK   seed.aixcoin.jonasschnelli.ch (38 results)
-OK   seed.btc.petertodd.org (23 results)
+OK   seed.aix.petertodd.org (23 results)
 OK   seed.aixcoin.sprovoost.nl (35 results)
 OK   dnsseed.emzy.de (41 results)
 
 * Testnet
 OK   testnet-seed.aixcoin.jonasschnelli.ch (36 results)
-OK   seed.tbtc.petertodd.org (38 results)
+OK   seed.taix.petertodd.org (38 results)
 OK   testnet-seed.bluematt.me (5 results)
 ```
 
