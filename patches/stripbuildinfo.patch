@@ -9,7 +9,7 @@ index 63e1bf67e2..358dd663f8 100644
 -    benchmark::BenchRunner PASTE2(bench_, PASTE2(__LINE__, n))(STRINGIZE(n), n, priority_level);
 +    benchmark::BenchRunner PASTE2(bench_, PASTE2(0, n))(STRINGIZE(n), n, priority_level);
  
- #endif // BITCOIN_BENCH_BENCH_H
+ #endif // AIXCOIN_BENCH_BENCH_H
 diff --git a/src/clientversion.cpp b/src/clientversion.cpp
 index 192e9c52bc..e257059624 100644
 --- a/src/clientversion.cpp
@@ -172,4 +172,4 @@ index b6c03bed2a..b4a1380061 100644
 -        "Unreachable code reached (non-fatal)", __FILE__, __LINE__, __func__)
 +        "Unreachable code reached (non-fatal)", __FILE__, 0, __func__)
  
- #endif // BITCOIN_UTIL_CHECK_H
+ #endif // AIXCOIN_UTIL_CHECK_H
